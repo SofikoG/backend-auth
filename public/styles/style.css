@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    background-color: black;
+    font-family: 'Outfit', sans-serif;
+    text-decoration: none;
+    color: rgb(140, 97, 176);
+    font-size: 30px;
+    margin: 30px;
+    border: 2px solid rgb(140, 97, 176);
+    border-radius: 10px;
+    padding: 3px;
+}
+
+nav a:hover {
+    color: rgb(76, 53, 95);
+    background-color: rgb(134, 96, 170);
+    border: 2px solid rgb(62, 43, 78);
+}

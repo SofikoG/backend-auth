@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.reg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+}
+
+form {
+    padding: 20px;
+    margin: 20px;
+    min-width: 320px;
+    max-width: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(153, 153, 153);
+    border-radius: 10px;
+    -webkit-box-shadow: 17px 19px 2px 0px rgba(34, 60, 80, 0.13);
+    -moz-box-shadow: 17px 19px 2px 0px rgba(34, 60, 80, 0.13);
+    box-shadow: 17px 19px 2px 0px rgba(34, 60, 80, 0.13);
+}
+
+form label,
+form input {
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+form input[type='submit'] {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.reg #b {
+    cursor: pointer;
+    transition: all ease-in-out 0.1s;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.reg #b:hover {
+    transition: all ease-in-out 0.1s;
+    background-color: rgb(237, 237, 237);
+}
+
+.reg #t {
+    cursor: pointer;
+    transition: all ease-in-out 0.1s;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.reg #t:hover {
+    transition: all ease-in-out 0.1s;
+    background-color: rgb(237, 237, 237);
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/authRegister.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {}) %>
+        <form method="post">
+            <label for="login">Логин </label>
+            <input
+                required
+                placeholder="login"
+                name="login"
+                id="login"
+                type="text"
+            />
+            <label for="password">Пароль</label>
+            <input
+                required
+                placeholder="b7Khr6#"
+                name="password"
+                id="password"
+                type="password"
+            />
+            <label for="conPassword">Подтвердите Пароль</label>
+            <input
+                required
+                placeholder="b7Khr6#"
+                name="conPassword"
+                id="conPassword"
+                type="password"
+            />
+            <input id="submit" type="submit" value="Зарегистрироваться" />
+        </form>
+    </body>
+</html>
