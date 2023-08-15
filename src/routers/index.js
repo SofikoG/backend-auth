@@ -12,10 +12,6 @@ router.use('/register', registerRouter)
 
 router.use('/auth', authRouter)
 
-// router.get('/home', (req, res) => {
-//     const mass = ['animals', 'pictures', 'games', 'lessons']
-//     return res.render('home', { items: mass })
-// })
 router.get('/home', (req, res) => {
     // const posts = ['elftown.jpg', 'forest.jpg', 'mountains.jpg', 'sky.jpg']
     const posts = [
