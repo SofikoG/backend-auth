@@ -12,7 +12,9 @@ export async function postRegister(req, res) {
         console.log(user)
         return res.send('Пользователь зарегистрирован')
     } else {
-        return res.send('Ошибка при регистрации (пароли не совпадают)')
+        res.redirect('/register')
+
+        return console.log('dd')
     }
     // const userData = { login, password }
     // const user = await User.create(userData)
