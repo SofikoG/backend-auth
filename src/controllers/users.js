@@ -56,7 +56,9 @@ export async function postUserByIdEdit(req, res) {
         try {
             const user = await User.findById(id)
 
-            await fs.rmSync(path.resolve('public/data/avatars', user.image))
+            if (user.image) {
+                await fs.rmSync(path.resolve('public/data/avatars', user.image))
+            }
 
             user.description = description
             user.image = fileName
