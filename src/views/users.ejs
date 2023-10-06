@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Пользователи</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/users.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {auth}) %>
+
+        <div class="users">
+            <% users.forEach(user=>{ %>
+            <a href="/users/<%= user._id %>">
+                <div class="user">
+                    <h1><%= user.login%></h1>
+                </div>
+            </a>
+            <%})%>
+        </div>
+    </body>
+    <%- include('particals/footer') %>
+</html>

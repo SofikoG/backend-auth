@@ -1,29 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 header {
     position: absolute;
+
     top: 0;
     width: 100%;
     height: 100px;
     background-color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
-nav a {
-    background-color: black;
+header nav a {
+    background-color: rgb(255, 255, 255);
     font-family: 'Outfit', sans-serif;
     text-decoration: none;
-    color: rgb(140, 97, 176);
-    font-size: 30px;
-    margin: 30px;
-    border: 2px solid rgb(140, 97, 176);
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    margin: 20px 50px;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
-    padding: 3px;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
 
-nav a:hover {
-    color: rgb(76, 53, 95);
-    background-color: rgb(134, 96, 170);
-    border: 2px solid rgb(62, 43, 78);
+header nav a:hover {
+    background-color: rgb(165, 165, 165);
+    border: 2px solid rgb(147, 147, 147);
+    transition: all 0.3s ease;
 }
+
+.error {
+    color: rgb(186, 41, 41);
+}
+
+::-webkit-scrollbar {
+    background-color: #000000;
+    width: 12px;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+}
+
+footer nav a {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Outfit', sans-serif;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    margin: 20px 50px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+footer nav a:hover {
+    background-color: rgb(165, 165, 165);
+    border: 2px solid rgb(147, 147, 147);
+    transition: all 0.3s ease;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: -88px;
+    width: 100%;
+    height: 100px;
+    background-color: #000000;
+    transition: all 0.3s ease-in-out;
+}
+
+footer:hover {
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* footer nav {
+    transition: all 0.3s ease-in-out;
+    margin-top: 13px;
+}
+
+footer:hover nav {
+    transition: all 0.3s ease-in-out;
+    margin-top: 0;
+} */

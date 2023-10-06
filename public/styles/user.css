@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+* {
+    font-family: 'Comic Neue', cursive;
+}
+
+.user {
+    margin: 150px 0 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profileImage {
+    /* margin-top: 200px; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: rgb(187, 150, 206);
+    border: 3px solid rgb(106, 89, 117);
+    cursor: pointer;
+}
+
+.login {
+    color: rgb(87, 72, 101);
+    background-color: rgb(187, 150, 206);
+    padding: 10px;
+    border: 3px solid rgb(106, 89, 117);
+
+    font-size: 50px;
+}
+
+.publics {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.description {
+    font-size: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.posts {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+}
+
+.post {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    background-size: cover;
+    height: 300px;
+    width: 300px;
+    margin: 30px;
+
+    background-color: rgb(244, 225, 157);
+    border: 3px solid rgb(145, 133, 92);
+    cursor: pointer;
+}
+
+.link {
+    border: none;
+    text-decoration: none;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.626);
+}
+.info {
+    transition: all 1s ease-in-out;
+    opacity: 0;
+}
+.post:hover .info {
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+}
+.subs {
+    color: rgb(87, 72, 101);
+    background-color: rgb(187, 150, 206);
+    padding: 10px;
+    border: 3px solid rgb(106, 89, 117);
+
+    font-size: 50px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Создание поста</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/createPost.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {auth:true}) %>
+        <a style="margin-top: 100px" href="/posts">
+            <button class="btn">Назад</button>
+        </a>
+        <form method="post" enctype="multipart/form-data">
+            <label for="">Создание поста</label>
+            <div class="addImage">
+                <div class="plus">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+            <input
+                class="file"
+                name="file"
+                type="file"
+                accept="image/*"
+                required
+            />
+            <input
+                class="title"
+                required
+                name="title"
+                type="text"
+                placeholder="Введите название поста "
+            />
+            <textarea
+                class="description"
+                required
+                name="description"
+                name=""
+                id=""
+                cols="20"
+                rows="5"
+                placeholder="Введите описание"
+            ></textarea>
+
+            <input class="inp" type="submit" value="Опубликовать" />
+        </form>
+        <%- include('particals/footer') %>
+        <script>
+            const addImage = document.querySelector('.addImage')
+            const file = document.querySelector('.file')
+
+            addImage.addEventListener('click', () => {
+                file.click()
+            })
+            file.addEventListener('change', event => {
+                const fileImage = event.target.files[0]
+                if (fileImage) {
+                    const src = URL.createObjectURL(fileImage)
+                    addImage.innerHTML = ''
+                    addImage.style.backgroundImage = `url(${src})`
+                } else {
+                    addImage.innerHTML =
+                        '<div class="plus"><i class="fa-solid fa-plus"></i></div>'
+                    addImage.style.backgroundImage = 'none'
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,36 +1,34 @@
+import { createHmac } from 'crypto'
+import User from '../models/User.js'
+import { generateAccessToken, CODE_NAME } from './utils.js'
+
 export function getAuth(req, res) {
-    return res.render('auth', {})
+    return res.render('auth', { error: '' })
 }
 
-export function postAuth(req, res) {
-    const users = [
-        {
-            login: 'YAto',
-            password: '12',
-        },
-        {
-            login: 'qwerty',
-            password: '34',
-        },
-        {
-            login: 'uiop',
-            password: '56',
-        },
-    ]
-
+export async function postAuth(req, res) {
     const { login, password } = req.body
 
-    let userFind = false
+    const candidate = await User.findOne({ login })
 
-    users.forEach(user => {
-        if (user.login == login && user.password == password) {
-            userFind = true
-        }
-    })
-
-    if (userFind) {
-        return res.send(`ВЫ Вошли под ${login}`)
+    if (!candidate) {
+        return res.render('auth', {
+            error: 'Пользователь с таким логином не найден',
+        })
     }
 
-    return res.send('<a href="/auth">Такого пользователя нет</a>')
+    //шифрование пароля
+    const hash = createHmac('sha256', CODE_NAME).update(password).digest('hex')
+
+    if (candidate.password != hash) {
+        return res.render('auth', {
+            error: 'Пароль не верный',
+        })
+    }
+
+    //cookie
+    const token = generateAccessToken(candidate._id)
+    res.cookie('token', token, { httpOnly: true })
+
+    return res.redirect(`/posts`)
 }

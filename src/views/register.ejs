@@ -3,12 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Регистрация</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
         <link rel="stylesheet" href="styles/authRegister.css" />
         <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
-        <%- include('particals/header', {}) %>
+        <%- include('particals/header', {auth:false}) %>
         <form method="post">
             <label for="login">Логин </label>
             <input
@@ -34,6 +39,9 @@
                 id="conPassword"
                 type="password"
             />
+            <% if(error){%>
+            <label class="error"><%= error %></label>
+            <% }%>
             <input id="submit" type="submit" value="Зарегистрироваться" />
         </form>
     </body>

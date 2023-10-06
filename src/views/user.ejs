@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Пользователь №<%= user._id %></title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/user.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {auth}) %>
+        <div class="user">
+            <% if(user.image){ %>
+            <div
+                style="
+                    background-image: url('/data/avatars/<%=user.image%>');
+                    background-color: transparent;
+                "
+                class="profileImage"
+            ></div>
+            <%}else{%>
+            <div class="profileImage"></div>
+            <%}%>
+            <h1 class="login"><%= user.login%></h1>
+            <h2 class="subs">Subscribers</h2>
+        </div>
+
+        <p class="description">
+            <%if(user.description && user.description.length!=''){%> <%=
+            user.description %> <% }else {%> У пользователя нет описания <% } %>
+        </p>
+        <% if(isOwner){%>
+        <a
+            style="display: block; text-align: center"
+            href="/users/<%= user._id%>/edit"
+            >Редактировать профиль</a
+        >
+        <a
+            style="display: block; text-align: center"
+            class="logout"
+            href="/logout"
+            >Выйти</a
+        >
+
+        <%}%>
+
+        <h1 class="publics">Публикации</h1>
+
+        <div class="posts">
+            <% posts.forEach(post =>{ %>
+            <a class="link" href="/posts/<%= post._id%>">
+                <div
+                    class="post"
+                    style="
+                        background-image: url('/data/postImages/<%= post.pictureName %>');
+                    "
+                >
+                    <div class="info">
+                        <% if(post.description.length < 30){ %>
+                        <h1><%= post.title %></h1>
+                        <h2><%= post.description %></h2>
+                        <% }else{ %>
+                        <h1><%= post.title %></h1>
+                        <h2><%= post.description.slice(0,30)+'…' %></h2>
+                        <% } %>
+
+                        <p>
+                            <%= new Date(Number(post.timestamp)).getDate() +'.'
+                            + (new Date(Number(post.timestamp)).getMonth()+ 1
+                            )+'.'+ new
+                            Date(Number(post.timestamp)).getFullYear()%>
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <% }) %>
+        </div>
+        <%- include('particals/footer') %>
+        <script>
+            const logout = document.querySelector('.logout')
+            logout.addEventListener('click', event => {
+                event.preventDefault()
+                const confirmLogout = confirm('Вы действительно хотите выйти?')
+                if (confirmLogout) {
+                    document.location.assign('/logout')
+                }
+            })
+        </script>
+    </body>
+</html>

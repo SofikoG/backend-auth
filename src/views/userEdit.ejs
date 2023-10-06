@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Редактирование профиля</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/userEdit.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {auth:true}) %>
+        <a style="margin-top: 100px" href="/users/<%= user._id%>">
+            <button class="btn">Назад</button>
+        </a>
+        <form method="post" enctype="multipart/form-data">
+            <label for="">Редактирование профиля</label>
+            <div class="addImage">
+                <% if(user.image){ %>
+                <img
+                    height="100%"
+                    src="/data/avatars/<%= user.image %>"
+                    alt=""
+                />
+                <%} else{%>
+                <div class="plus">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <%}%>
+            </div>
+            <input class="file" name="file" type="file" accept="image/*" />
+
+            <textarea
+                value="<%= user.description %>"
+                class="description"
+                required
+                name="description"
+                cols="20"
+                rows="5"
+                placeholder="Введите описание"
+            >
+ <%= user.description %></textarea
+            >
+            <% if(isSaved){ %>
+            <p>Данные обновлены</p>
+            <% } %>
+            <input class="inp" type="submit" value="Сохранить" />
+        </form>
+        <%- include('particals/footer') %>
+
+        <script>
+            const addImage = document.querySelector('.addImage')
+            const file = document.querySelector('.file')
+
+            addImage.addEventListener('click', () => {
+                file.click()
+            })
+            file.addEventListener('change', event => {
+                const fileImage = event.target.files[0]
+                if (fileImage) {
+                    const src = URL.createObjectURL(fileImage)
+                    addImage.innerHTML = ''
+                    addImage.style.backgroundImage = `url(${src})`
+                } else {
+                    addImage.innerHTML =
+                        '<div class="plus"><i class="fa-solid fa-plus"></i></div>'
+                    addImage.style.backgroundImage = 'none'
+                }
+            })
+        </script>
+    </body>
+</html>

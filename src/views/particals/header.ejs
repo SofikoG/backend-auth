@@ -1,8 +1,14 @@
 <header>
     <nav>
-        <a href="/home">HOME</a>
+        <a href="/posts">POSTS</a>
+        <a href="/users">USERS</a>
+        <% if(!auth){ %>
         <a href="/register">REGISTRATION</a>
         <a href="/auth">AUTHENTICATION</a>
-        <a href="/">MY PROFILE</a>
+        <% } else{%>
+
+        <a href="/posts/create">CREATE POST</a>
+
+        <% } %>
     </nav>
 </header>

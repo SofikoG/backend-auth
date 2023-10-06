@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Главная</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/posts.css" />
+    </head>
+    <body>
+        <%- include('particals/header', {auth}) %> <% if(posts.length > 0){ %>
+
+        <div class="posts">
+            <% posts.forEach(post =>{ %>
+            <a href="/posts/<%= post._id%>">
+                <div class="post">
+                    <div
+                        class="image"
+                        style="
+                            background-image: url('/data/postImages/<%= post.pictureName %>');
+                        "
+                    ></div>
+                    <%= post.creatorId %> <% if(post.description.length < 30){
+                    %>
+                    <h1><%= post.title %></h1>
+                    <h2><%= post.description %></h2>
+                    <% }else{ %>
+                    <h1><%= post.title %></h1>
+                    <h2><%= post.description.slice(0,30)+'…' %></h2>
+                    <% } %>
+
+                    <p>
+                        <%= new Date(Number(post.timestamp)).getDate() +'.' +
+                        (new Date(Number(post.timestamp)).getMonth()+ 1 )+'.'+
+                        new Date(Number(post.timestamp)).getFullYear()%>
+                    </p>
+                </div>
+            </a>
+
+            <% }) %>
+        </div>
+        <% }else{%>
+        <h1 style="margin: 200px 0; text-align: center">Постов пока нет</h1>
+        <%}%> <%- include('particals/footer') %>
+    </body>
+</html>

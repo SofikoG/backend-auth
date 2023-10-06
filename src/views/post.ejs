@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Пост №<%= post._id%></title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/post.css" />
+    </head>
+
+    <body>
+        <%- include('particals/header', {auth}) %>
+        <a href="/posts">
+            <button class="btn">К постам</button>
+        </a>
+        <div class="post">
+            <div
+                class="image"
+                style="
+                    background-image: url('/data/postImages/<%= post.pictureName %>');
+                "
+            ></div>
+            <div class="info">
+                <h1><%= post.title %></h1>
+                <h2><%= post.description %></h2>
+
+                <p>
+                    <%= new Date(Number(post.timestamp)).getDate() +'.' + (new
+                    Date(Number(post.timestamp)).getMonth()+ 1 )+'.'+ new
+                    Date(Number(post.timestamp)).getFullYear()%>
+                </p>
+            </div>
+        </div>
+        <%- include('particals/footer') %>
+    </body>
+</html>
