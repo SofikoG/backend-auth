@@ -15,6 +15,13 @@
     </head>
     <body>
         <%- include('particals/header', {auth}) %> <% if(posts.length > 0){ %>
+        <%if(page>1){%>
+        <a class="prevPosts" href="/posts?page=<%=page-1%>"
+            >Предыдущая страница</a
+        >
+        <% }else{%>
+        <a class="prevPosts" href=""></a>
+        <%}%>
 
         <div class="posts">
             <% posts.forEach(post =>{ %>
@@ -45,7 +52,14 @@
 
             <% }) %>
         </div>
-        <% }else{%>
+        <% if(count > page*10){%>
+        <a
+            class="nextPosts"
+            style="margin-bottom: 50px"
+            href="/posts?page=<%=page+1%>"
+            >Следующие посты</a
+        >
+        <%}%> <% }else{%>
         <h1 style="margin: 200px 0; text-align: center">Постов пока нет</h1>
         <%}%> <%- include('particals/footer') %>
     </body>

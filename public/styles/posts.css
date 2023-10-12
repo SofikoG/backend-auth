@@ -23,7 +23,7 @@ body {
 }
 
 .posts {
-    margin-top: 120px;
+    margin-top: 30px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -38,11 +38,16 @@ body {
     border: 6px double #d6b656;
     padding: 20px;
     background-color: #fff2cc;
-    margin-right: 60px;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin: 50px;
     text-align: center;
+    transition: all 0.1s ease-in;
     border-radius: 10px;
+}
+
+.post:hover {
+    border: 6px double #ac9243;
+    transition: all 0.1s ease-in;
+    background-color: #dbd1b2;
 }
 
 h1 {
@@ -63,4 +68,30 @@ a {
 
 p {
     margin-top: 25px;
+}
+
+.prevPosts {
+    display: block;
+    margin-top: 130px;
+    text-align: center;
+}
+.nextPosts {
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .post {
+        width: 300px;
+        border: 6px double #d6b656;
+        padding: 20px;
+        background-color: #fff2cc;
+        margin: 25px 0;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .posts {
+        margin-top: 25px;
+    }
 }

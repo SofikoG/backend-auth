@@ -100,3 +100,21 @@ a {
 
     font-size: 50px;
 }
+
+@media screen and (max-width: 768px) {
+    .user {
+        flex-direction: column;
+        margin: 130px 0 20px;
+    }
+    .login {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .publics {
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    .post {
+        margin: 15px;
+    }
+}

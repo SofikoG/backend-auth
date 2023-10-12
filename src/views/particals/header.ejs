@@ -1,13 +1,14 @@
 <header>
     <nav>
-        <a href="/posts">POSTS</a>
-        <a href="/users">USERS</a>
+        <a href="/posts">ПОСТЫ</a>
+        <a href="/users">ЮЗЕРЫ</a>
         <% if(!auth){ %>
-        <a href="/register">REGISTRATION</a>
-        <a href="/auth">AUTHENTICATION</a>
+
+        <a href="/auth">ВОЙТИ</a>
         <% } else{%>
 
-        <a href="/posts/create">CREATE POST</a>
+        <a href="/posts/create">СОЗДАТЬ</a>
+        <a href="/account">АККАУНТ</a>
 
         <% } %>
     </nav>

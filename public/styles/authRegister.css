@@ -50,6 +50,7 @@ form input {
 form input[type='submit'] {
     margin-bottom: 0;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .reg #b {
@@ -80,4 +81,12 @@ form input[type='submit'] {
 .reg #t:hover {
     transition: all ease-in-out 0.1s;
     background-color: rgb(237, 237, 237);
+}
+
+.exist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
 }

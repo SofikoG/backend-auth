@@ -1,14 +1,23 @@
 import Post from '../models/Post.js'
-import User from '../models/User.js'
 
 export async function getPosts(req, res) {
-    let posts = await Post.find()
-    // posts = await posts.map(async post => {
-    //     const postsCreator = await User.findById(post.creatorId)
-    //     return { ...post, creatorLogin: postsCreator }
-    // })
+    let page = 1
+    if (Number(req.query.page)) {
+        page = Number(req.query.page)
+    }
+    // await Post.deleteMany()
+    const count = await Post.count()
 
-    return res.render('posts', { posts, auth: req.userId ? true : false })
+    const posts = await Post.find()
+        .skip((page - 1) * 10)
+        .limit(10)
+
+    return res.render('posts', {
+        posts,
+        auth: req.userId ? true : false,
+        page,
+        count,
+    })
 }
 
 export async function getPostById(req, res) {

@@ -5,9 +5,23 @@ import User from '../models/User.js'
 import Post from '../models/Post.js'
 
 export async function getUsers(req, res) {
-    const users = await User.find()
+    let page = 1
+    if (Number(req.query.page)) {
+        page = Number(req.query.page)
+    }
+    // await User.deleteMany()
+    const count = await User.count()
 
-    return res.render('users', { users, auth: req.userId ? true : false })
+    const users = await User.find()
+        .skip((page - 1) * 10)
+        .limit(10)
+
+    return res.render('users', {
+        users,
+        auth: req.userId ? true : false,
+        page,
+        count,
+    })
 }
 
 export async function getUserById(req, res) {
@@ -57,7 +71,13 @@ export async function postUserByIdEdit(req, res) {
             const user = await User.findById(id)
 
             if (user.image) {
-                await fs.rmSync(path.resolve('public/data/avatars', user.image))
+                try {
+                    await fs.rmSync(
+                        path.resolve('public/data/avatars', user.image)
+                    )
+                } catch {
+                    console.log('Оштбка при удалении картинки')
+                }
             }
 
             user.description = description

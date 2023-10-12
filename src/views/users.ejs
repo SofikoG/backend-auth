@@ -14,7 +14,14 @@
         <link rel="stylesheet" href="/styles/users.css" />
     </head>
     <body>
-        <%- include('particals/header', {auth}) %>
+        <%- include('particals/header', {auth}) %> <%if(users.length > 1){%>
+        <%if(page>1){%>
+        <a class="prevUsers" href="/users?page=<%=page-1%>"
+            >Предыдущая страница</a
+        >
+        <% }else{%>
+        <a class="prevUsers" href=""></a>
+        <%}%>
 
         <div class="users">
             <% users.forEach(user=>{ %>
@@ -25,6 +32,16 @@
             </a>
             <%})%>
         </div>
+        <% if(count > page*10){%>
+        <a
+            class="nextUsers"
+            style="margin-bottom: 50px"
+            href="/users?page=<%=page+1%>"
+            >Следующие посты</a
+        >
+
+        <%}%><% }else{%>
+        <h1 style="margin: 200px 0; text-align: center">Юзеров пока нет</h1>
+        <%}%> <%- include('particals/footer') %>
     </body>
-    <%- include('particals/footer') %>
 </html>

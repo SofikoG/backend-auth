@@ -4,6 +4,7 @@ import { router as authRouter } from './auth.js'
 import { router as usersRouter } from './users.js'
 import { router as postsRouter } from './posts.js'
 import { router as logoutRouter } from './logout.js'
+import { router as accountRouter } from './account.js'
 import authMiddleware from '../middlewares/authMiddleware.js'
 
 export const router = express.Router()
@@ -21,3 +22,5 @@ router.use('/users', authMiddleware, usersRouter)
 router.use('/posts', postsRouter)
 
 router.use('/logout', logoutRouter)
+
+router.use('/account', authMiddleware, accountRouter)
