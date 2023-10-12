@@ -47,10 +47,10 @@
             >Выйти</a
         >
 
-        <%}%>
+        <%}%> <% if(posts.length>0){%>
 
         <h1 class="publics">Публикации</h1>
-
+        <%}%>
         <div class="posts">
             <% posts.forEach(post =>{ %>
             <a class="link" href="/posts/<%= post._id%>">
