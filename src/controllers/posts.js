@@ -9,6 +9,7 @@ export async function getPosts(req, res) {
     const count = await Post.count()
 
     const posts = await Post.find()
+        .sort({ _id: -1 })
         .skip((page - 1) * 10)
         .limit(10)
 
